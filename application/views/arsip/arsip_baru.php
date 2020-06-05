@@ -11,7 +11,7 @@
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <!-- form start -->
-                    <form action="proses/insert.php" role="form" method="post" enctype="multipart/form-data">
+                    <?= form_open_multipart('arsip/tambah_arsip'); ?>
                         <div class="row" style="margin-bottom:20px;">
                             <div class="col-lg-6 col-xs-6">
                                 <!-- small box -->
@@ -88,7 +88,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>No Urut</label>
-                                            <input name="noUrut" type="text" class="form-control" placeholder="Masukkan Nomor Urut">
+                                            <input name="noUrut" type="number" class="form-control" placeholder="Masukkan Nomor Urut">
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 form-group">
@@ -103,11 +103,11 @@
                                         <div class="row">
                                             <div class="col-md-6 form-group">
                                                 <label>Tanggal Surat</label>
-                                                <div class="input-group date">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
+                                                <div class="input-group" style="position: relative;">
+                                                    <input type="text" class="form-control" name="tanggalSurat" id="datepicker" placeholder="Tanggal Surat" required="">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="fa fa-calendar" id="eyePass"></i></span>
                                                     </div>
-                                                    <input name="tanggalSurat" type="text" class="form-control pull-right" id="datepicker">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 form-group">
@@ -152,12 +152,14 @@
                                             <label>Isi Ringkas</label>
                                             <textarea name="isiRingkas" class="form-control" placeholder="Masukkan Isi Ringkas"></textarea>
                                         </div>
-                                        <div class="box box-primary">
-                                            <div style="padding:20px;" class="form-group">
-                                                <label for="exampleInputFile">Scan Arsip</label>
-                                                <input name="scanArsip" type="file" id="exampleInputFile">
-                                                <p class="help-block">Masukkan gambar disini</p>
+                                        <div class="form-group">
+                                            <label for="customFile">Scan Arsip</label>
+                                            <img id="image-preview" alt="image preview" />
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" name="scanArsip" id="customFile" onchange="previewImage();" required>
+                                                <label class="custom-file-label" for="customFile">Masukkan Arsip Disini</label>
                                             </div>
+                                            <small class="text-danger">*Ukuran maksimal 5 MB</small>
                                         </div>
                                         <div class="form-group">
                                             <label>Arsiparis</label>

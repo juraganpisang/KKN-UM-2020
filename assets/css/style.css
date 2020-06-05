@@ -1,8 +1,16 @@
-.inner{
-    color: white;
+.inner {
+	color: white;
 }
 
-.icon{
-    font-size: 50px;
-    color : white;
+.icon {
+	font-size: 50px;
+	color: white;
+}
+
+/* PREVIEW IMAGE */
+#image-preview {
+	display: none;
+	width: 200px;
+	height: 200px;
+	margin: 15px auto;
 }

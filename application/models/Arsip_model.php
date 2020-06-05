@@ -14,5 +14,9 @@ class Arsip_model extends CI_Model
 		$query = $this->db->query("SELECT * from tbl_arsip");
 		return $query->result();
     }
+
+    public function tambahArsip($data){
+			return $this->db->insert('tbl_arsip', $data);
+    }
 }
 ?>

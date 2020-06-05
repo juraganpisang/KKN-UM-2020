@@ -53,7 +53,10 @@
 
 <!-- Page level plugins -->
 <script src="<?= base_url('assets/vendor/datatables/jquery.dataTables.min.js'); ?>"></script>
+
 <script src="<?= base_url('assets/vendor/datatables/dataTables.bootstrap4.min.js'); ?>"></script>
+
+<script src="<?= base_url('assets/js/bootstrap-datepicker.min.js'); ?>"></script>
 
 <script>
     $(document).ready(function() {
@@ -69,16 +72,16 @@
         $('.tambah').click(function() {
             i++;
             $('#anggota').append(
-                '<div id="row'+i+'">'+
-                '<hr>'+
-                '<div class="row">'+
-                '<div class="col">'+
-                '<h5>Anggota Keluarga</h5>'+
-                '</div>'+
-                '<div class="col text-right">'+
-                '<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button>'+
-                '</div>'+
-                '</div>'+
+                '<div id="row' + i + '">' +
+                '<hr>' +
+                '<div class="row">' +
+                '<div class="col">' +
+                '<h5>Anggota Keluarga</h5>' +
+                '</div>' +
+                '<div class="col text-right">' +
+                '<button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">X</button>' +
+                '</div>' +
+                '</div>' +
                 '<div class="form-group">' +
                 '<label>NIK</label>' +
                 '<input name="nik" type="text" class="form-control" placeholder="Masukkan NIK" required>' +
@@ -154,14 +157,41 @@
                 '</select>' +
                 '</div>' +
                 '</div>' +
-                '</div>'+
+                '</div>' +
                 '</div>');
         });
         $(document).on('click', '.btn_remove', function() {
             var button_id = $(this).attr("id");
             $('#row' + button_id + '').remove();
         });
+
+        //Date picker
+        $('#datepicker').datepicker({
+            autoclose: true,
+            format: "yyyy-mm-dd"
+        })
     });
+
+    function getText() {
+        var x = document.getElementById("indeks");
+        var y = document.getElementById("kdSurat");
+        y.value = x.value.substr(0, 2);
+    };
+
+    $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+
+    function previewImage() {
+        document.getElementById("image-preview").style.display = "block";
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("customFile").files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            document.getElementById("image-preview").src = oFREvent.target.result;
+        };
+    };
 </script>
 </body>
 
