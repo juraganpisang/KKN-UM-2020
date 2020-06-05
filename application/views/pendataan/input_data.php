@@ -24,6 +24,15 @@
                                         <input name="noKK" type="text" class="form-control" placeholder="Masukkan Nomor KK" required>
                                     </div>
                                     <div class="form-group">
+                                        <label for="customFile">Foto KK</label>
+                                        <img id="image-preview" alt="image preview" />
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="fotoKK" id="customFile" onchange="previewImage();" required>
+                                            <label class="custom-file-label" for="customFile">Masukkan Arsip Disini</label>
+                                        </div>
+                                        <small class="text-danger">*Ukuran maksimal 5 MB</small>
+                                    </div>
+                                    <div class="form-group">
                                         <label>Alamat</label>
                                         <textarea name="alamat" class="form-control" placeholder="Masukkan Alamat" required></textarea>
                                     </div>
@@ -78,18 +87,23 @@
                                             <label>Nama</label>
                                             <input name="nama" type="text" class="form-control" placeholder="Masukkan Nama" required>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Umur</label>
-                                            <input name="umur" type="number" class="form-control" placeholder="Masukkan Umur" required>
-                                        </div>
                                         <div class="row">
-                                            <div class="col-6 form-group">
+                                            <div class="col form-group">
+                                                <label>Umur</label>
+                                                <input name="umur" type="number" class="form-control" placeholder="Masukkan Umur" required>
+                                            </div>
+                                            <div class="col form-group">
                                                 <label>Tempat Lahir</label>
                                                 <input name="tempatLahir" type="text" class="form-control" placeholder="Masukkan Tempat Lahir" required>
                                             </div>
-                                            <div class="col-6 form-group">
+                                            <div class="col form-group">
                                                 <label>Tanggal Lahir</label>
-                                                <input name="tanggalLahir" type="text" class="form-control" placeholder="Masukkan Tanggal Lahir" required>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control tanggalLahir" name="tanggalLahir" placeholder="Masukkan Tanggal Lahir" required="">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -121,13 +135,18 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-6 form-group">
+                                            <div class="col form-group">
                                                 <label>Pendidikan Terakhir</label>
                                                 <input name="pendidikan" type="text" class="form-control" placeholder="Masukkan Pendidikan Terakhir" required>
                                             </div>
-                                            <div class="col-6 form-group">
+                                            <div class="col form-group">
                                                 <label>Status Perkawinan</label>
-                                                <input name="status" type="text" class="form-control" placeholder="Masukkan Status Perkawinan" required>
+                                                <select name="status_kawin" class="form-control">
+                                                    <option value="Belum Kawin">Belum Kawin</option>
+                                                    <option value="Kawin">Kawin</option>
+                                                    <option value="Cerai Hidup">Cerai Hidup</option>
+                                                    <option value="Cerai Mati">Cerai Mati</option>
+                                                </select>    
                                             </div>
                                         </div>
                                         <div class="row">
@@ -144,6 +163,14 @@
                                                     <option value="sangat_tinggi">Rp. 7.000.000 - > Rp. 10.000.000</option>
                                                 </select>
                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="fotoPenghasilan">Foto Bukti Penghasilan</label>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" name="fotoPenghasilan" id="fotoPenghasilan" required>
+                                                <label class="custom-file-label" for="fotoPenghasilan">Masukkan Bukti Penghasilan</label>
+                                            </div>
+                                            <small class="text-danger">*Ukuran maksimal 5 MB</small>
                                         </div>
                                     </div>
                                     <!-- /.box-body -->

@@ -10,7 +10,6 @@
 /* PREVIEW IMAGE */
 #image-preview {
 	display: none;
-	width: 200px;
-	height: 200px;
+	width: 300px;
 	margin: 15px auto;
 }

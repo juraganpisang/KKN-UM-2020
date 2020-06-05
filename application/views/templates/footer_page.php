@@ -60,6 +60,7 @@
 
 <script>
     $(document).ready(function() {
+
         $('#table_peminjam').DataTable({
             "scrollX": true
         });
@@ -70,6 +71,7 @@
 
         var i = 1;
         $('.tambah').click(function() {
+
             i++;
             $('#anggota').append(
                 '<div id="row' + i + '">' +
@@ -90,22 +92,27 @@
                 '<label>Nama</label>' +
                 '<input name="nama" type="text" class="form-control" placeholder="Masukkan Nama" required>' +
                 '</div>' +
-                '<div class="form-group">' +
+                '<div class="row">' +
+                '<div class="col form-group">' +
                 '<label>Umur</label>' +
                 '<input name="umur" type="number" class="form-control" placeholder="Masukkan Umur" required>' +
                 '</div>' +
-                '<div class="row">' +
-                '<div class="col-6 form-group">' +
+                '<div class="col form-group">' +
                 '<label>Tempat Lahir</label>' +
                 '<input name="tempatLahir" type="text" class="form-control" placeholder="Masukkan Tempat Lahir" required>' +
                 '</div>' +
-                '<div class="col-6 form-group">' +
+                '<div class="col form-group">' +
                 '<label>Tanggal Lahir</label>' +
-                '<input name="tanggalLahir" type="text" class="form-control" placeholder="Masukkan Tanggal Lahir" required>' +
+                '<div class="input-group">' +
+                '<input type="text" class="form-control tanggalLahir" name="tanggalLahir" placeholder="Masukkan Tanggal Lahir" required="">' +
+                '<div class="input-group-prepend">' +
+                '<span class="input-group-text"><i class="fa fa-calendar"></i></span>' +
+                '</div>' +
+                '</div>' +
                 '</div>' +
                 '</div>' +
                 '<div class="row">' +
-                '<div class="col-6 form-group">' +
+                '<div class="col form-group">' +
                 '<label>Jenis Kelamin</label>' +
                 '<div class="form-check">' +
                 '<input type="radio" id="laki" value="Laki-Laki" name="jenkel" class="form-check-input" required>' +
@@ -120,7 +127,7 @@
                 '</label>' +
                 '</div>' +
                 '</div>' +
-                '<div class="col-6 form-group">' +
+                '<div class="col form-group">' +
                 '<label>Agama</label>' +
                 '<select class="form-control" required>' +
                 '<option value="Islam">Islam</option>' +
@@ -133,21 +140,26 @@
                 '</div>' +
                 '</div>' +
                 '<div class="row">' +
-                '<div class="col-6 form-group">' +
+                '<div class="col form-group">' +
                 '<label>Pendidikan Terakhir</label>' +
                 '<input name="pendidikan" type="text" class="form-control" placeholder="Masukkan Pendidikan Terakhir" required>' +
                 '</div>' +
-                '<div class="col-6 form-group">' +
+                '<div class="col form-group">' +
                 '<label>Status Perkawinan</label>' +
-                '<input name="status" type="text" class="form-control" placeholder="Masukkan Status Perkawinan" required>' +
+                '<select name="status_kawin" class="form-control">' +
+                '<option value="Belum Kawin">Belum Kawin</option>' +
+                '<option value="Kawin">Kawin</option>' +
+                '<option value="Cerai Hidup">Cerai Hidup</option>' +
+                '<option value="Cerai Mati">Cerai Mati</option>' +
+                '</select>' +
                 '</div>' +
                 '</div>' +
                 '<div class="row">' +
-                '<div class="col-6 form-group">' +
+                '<div class="col form-group">' +
                 '<label>Pekerjaan</label>' +
                 '<input name="pendidikan" type="text" class="form-control" placeholder="Masukkan Pekerjaan" required>' +
                 '</div>' +
-                '<div class="col-6 form-group">' +
+                '<div class="col form-group">' +
                 '<label>Penghasilan Perbulan</label>' +
                 '<select class="form-control" required>' +
                 '<option value="rendah">Rp. 0 - Rp. 1.000.000</option>' +
@@ -157,8 +169,29 @@
                 '</select>' +
                 '</div>' +
                 '</div>' +
+                '<div class="form-group">' +
+                '<label for="fotoPenghasilan">Foto Bukti Penghasilan</label>' +
+                '<div class="custom-file">' +
+                '<input type="file" class="custom-file-input" name="fotoPenghasilan" id="fotoPenghasilan" required>' +
+                '<label class="custom-file-label" for="fotoPenghasilan">Masukkan Bukti Penghasilan</label>'+
+                '</div>' +
+                '<small class="text-danger">*Ukuran maksimal 5 MB</small>' +
+                '</div>' +
                 '</div>' +
                 '</div>');
+
+                
+            //upload file
+            $(".custom-file-input").on("change", function() {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            });
+
+            //Date picker
+            $('.tanggalLahir').datepicker({
+                autoclose: true,
+                format: "yyyy-mm-dd"
+            });
         });
         $(document).on('click', '.btn_remove', function() {
             var button_id = $(this).attr("id");
@@ -169,7 +202,13 @@
         $('#datepicker').datepicker({
             autoclose: true,
             format: "yyyy-mm-dd"
-        })
+        });
+
+        //Date picker
+        $('.tanggalLahir').datepicker({
+            autoclose: true,
+            format: "yyyy-mm-dd"
+        });
     });
 
     function getText() {
@@ -177,11 +216,6 @@
         var y = document.getElementById("kdSurat");
         y.value = x.value.substr(0, 2);
     };
-
-    $(".custom-file-input").on("change", function() {
-        var fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-    });
 
     function previewImage() {
         document.getElementById("image-preview").style.display = "block";
@@ -192,6 +226,12 @@
             document.getElementById("image-preview").src = oFREvent.target.result;
         };
     };
+
+    //upload file
+    $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
 </script>
 </body>
 

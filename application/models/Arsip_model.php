@@ -18,5 +18,15 @@ class Arsip_model extends CI_Model
     public function tambahArsip($data){
 			return $this->db->insert('tbl_arsip', $data);
     }
+
+    public function jmlSuratMasuk(){
+      $query = $this->db->query("SELECT COUNT(id) AS 'jml' FROM tbl_arsip WHERE status='0'");
+      return $query->result();
+    }
+
+    public function jmlSuratKeluar(){
+      $query = $this->db->query("SELECT COUNT(id) AS 'jml' FROM tbl_arsip WHERE status='1'");
+      return $query->result();
+    }
 }
 ?>
