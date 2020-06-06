@@ -32,6 +32,18 @@ class Arsip_model extends CI_Model
     return $this->db->delete('tbl_arsip');
   }
 
+  public function deleteScanArsip($scan)
+  {
+
+    $target = (FCPATH . '/assets/file/scanArsip/' . $scan);
+    echo $target;
+    if (delete_files($target)) {
+      echo "BERHASIL";
+    } else {
+      echo "GAGAL;";
+    }
+  }
+
   public function jmlSuratMasuk()
   {
     $query = $this->db->query("SELECT COUNT(id) AS 'jml' FROM tbl_arsip WHERE status='0'");

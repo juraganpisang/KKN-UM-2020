@@ -11,7 +11,7 @@
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <!-- form start -->
-                    <form action="proses/insert.php" role="form" method="post" enctype="multipart/form-data">
+                    <form action="<?= base_url('pendataan/do_tambah') ?>" role="form" method="post" enctype="multipart/form-data">
                         <!-- BEDA KONTEN -->
                         <div class="row">
                             <div class="col-md-12">
@@ -27,20 +27,21 @@
                                         <label for="customFile">Foto KK</label>
                                         <img id="image-preview" alt="image preview" />
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="fotoKK" id="customFile" onchange="previewImage();" required>
+                                            <input type="file" class="custom-file-input" name="foto_kk" id="customFile" onchange="previewImage();">
                                             <label class="custom-file-label" for="customFile">Masukkan Arsip Disini</label>
                                         </div>
                                         <small class="text-danger">*Ukuran maksimal 5 MB</small>
                                     </div>
                                     <div class="form-group">
                                         <label>Alamat</label>
-                                        <textarea name="alamat" class="form-control" placeholder="Masukkan Alamat" required></textarea>
+                                        <textarea name="alamat" class="form-control" placeholder="Masukkan Alamat"></textarea>
                                     </div>
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Desa</label>
-                                                <select class="form-control" required>
+                                                <select name="desa" class="form-control">
+                                                    <option value="">- Pilih -</option>
                                                     <option value="1">Desa 1</option>
                                                     <option value="2">Desa 2</option>
                                                     <option value="3">Desa 3</option>
@@ -53,7 +54,8 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>RW</label>
-                                                <select class="form-control" required>
+                                                <select name="rw" class="form-control">
+                                                    <option value="">- Pilih -</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -64,9 +66,10 @@
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group" required>
+                                            <div class="form-group">
                                                 <label>RT</label>
-                                                <select class="form-control">
+                                                <select name="rt" class="form-control">
+                                                    <option value="">- Pilih -</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -81,25 +84,25 @@
                                     <div id="anggota">
                                         <div class="form-group">
                                             <label>NIK</label>
-                                            <input name="nik" type="text" class="form-control" placeholder="Masukkan NIK" required>
+                                            <input name="nik[]" type="text" class="form-control" placeholder="Masukkan NIK" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Nama</label>
-                                            <input name="nama" type="text" class="form-control" placeholder="Masukkan Nama" required>
+                                            <input name="nama[]" type="text" class="form-control" placeholder="Masukkan Nama">
                                         </div>
                                         <div class="row">
                                             <div class="col form-group">
                                                 <label>Umur</label>
-                                                <input name="umur" type="number" class="form-control" placeholder="Masukkan Umur" required>
+                                                <input name="umur[]" type="number" class="form-control" placeholder="Masukkan Umur">
                                             </div>
                                             <div class="col form-group">
                                                 <label>Tempat Lahir</label>
-                                                <input name="tempatLahir" type="text" class="form-control" placeholder="Masukkan Tempat Lahir" required>
+                                                <input name="tempatLahir[]" type="text" class="form-control" placeholder="Masukkan Tempat Lahir">
                                             </div>
                                             <div class="col form-group">
                                                 <label>Tanggal Lahir</label>
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control tanggalLahir" name="tanggalLahir" placeholder="Masukkan Tanggal Lahir" required="">
+                                                    <input type="text" class="form-control tanggalLahir" name="tanggalLahir[]" placeholder="Masukkan Tanggal Lahir" >
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                     </div>
@@ -110,13 +113,13 @@
                                             <div class="col-6 form-group">
                                                 <label>Jenis Kelamin</label>
                                                 <div class="form-check">
-                                                    <input type="radio" id="laki" value="Laki-Laki" name="jenkel" class="form-check-input" required>
+                                                    <input type="radio" id="laki" value="Laki-Laki" name="jenkel0"  class="form-check-input">
                                                     <label class="form-check-label" for="laki">
                                                         Laki Laki
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input type="radio" id="perempuan" value="Perempuan" name="jenkel" class="form-check-input" required>
+                                                    <input type="radio" id="perempuan" value="Perempuan" name="jenkel0" class="form-check-input">
                                                     <label class="form-check-label" for="perempuan">
                                                         Perempuan
                                                     </label>
@@ -124,7 +127,8 @@
                                             </div>
                                             <div class="col-6 form-group">
                                                 <label>Agama</label>
-                                                <select class="form-control" required>
+                                                <select name="agama[]" class="form-control">
+                                                    <option value="">- Pilih -</option>
                                                     <option value="Islam">Islam</option>
                                                     <option value="Hindu">Hindu</option>
                                                     <option value="Kristen">Kristen</option>
@@ -137,11 +141,12 @@
                                         <div class="row">
                                             <div class="col form-group">
                                                 <label>Pendidikan Terakhir</label>
-                                                <input name="pendidikan" type="text" class="form-control" placeholder="Masukkan Pendidikan Terakhir" required>
+                                                <input name="pendidikan[]" type="text" class="form-control" placeholder="Masukkan Pendidikan Terakhir">
                                             </div>
                                             <div class="col form-group">
                                                 <label>Status Perkawinan</label>
-                                                <select name="status_kawin" class="form-control">
+                                                <select name="status_kawin[]" class="form-control">
+                                                    <option value="">- Pilih -</option>
                                                     <option value="Belum Kawin">Belum Kawin</option>
                                                     <option value="Kawin">Kawin</option>
                                                     <option value="Cerai Hidup">Cerai Hidup</option>
@@ -152,11 +157,12 @@
                                         <div class="row">
                                             <div class="col-6 form-group">
                                                 <label>Pekerjaan</label>
-                                                <input name="pendidikan" type="text" class="form-control" placeholder="Masukkan Pekerjaan" required>
+                                                <input name="pekerjaan[]" type="text" class="form-control" placeholder="Masukkan Pekerjaan">
                                             </div>
                                             <div class="col-6 form-group">
                                                 <label>Penghasilan Perbulan</label>
-                                                <select class="form-control" required>
+                                                <select name="penghasilan[]" class="form-control">
+                                                    <option value="">- Pilih -</option>
                                                     <option value="rendah">Rp. 0 - Rp. 1.000.000</option>
                                                     <option value="cukup">Rp. 1.000.000 - Rp. 3.000.000</option>
                                                     <option value="tinggi">Rp. 3.000.000 - Rp. 7.000.000</option>
@@ -165,10 +171,10 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="fotoPenghasilan">Foto Bukti Penghasilan</label>
+                                            <label for="fotoPenghasilan0">Foto Bukti Penghasilan</label>
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" name="fotoPenghasilan" id="fotoPenghasilan" required>
-                                                <label class="custom-file-label" for="fotoPenghasilan">Masukkan Bukti Penghasilan</label>
+                                                <input type="file" class="custom-file-input" name="fotoPenghasilan0" id="fotoPenghasilan0">
+                                                <label class="custom-file-label" for="fotoPenghasilan0">Masukkan Bukti Penghasilan</label>
                                             </div>
                                             <small class="text-danger">*Ukuran maksimal 5 MB</small>
                                         </div>
@@ -185,6 +191,4 @@
             </div>
         </div>
     </div>
-</div>
-<!-- awas kari -->
 </div>
