@@ -167,7 +167,7 @@
                                         <label for="customFile">Scan Arsip</label>
                                         <img id="image-preview" alt="image preview" />
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="scanArsip" id="customFile" onchange="previewImage();" required>
+                                            <input type="file" class="custom-file-input" name="scan_arsip" id="customFile" onchange="previewImage();" required>
                                             <label class="custom-file-label" for="customFile">Masukkan Arsip Disini</label>
                                         </div>
                                         <small class="text-danger">*Ukuran maksimal 5 MB</small>

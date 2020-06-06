@@ -48,19 +48,25 @@
         </div>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+    <?php
+    if ($this->session->username == "admin") {
+    ?>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Personal
-    </div>
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Personal
+        </div>
 
-    <li class="nav-item ">
-        <a class="nav-link" href="<?php echo base_url('user/profile') ?>">
-            <i class="fa fa-fw fa-user"></i>
-            <span>Add User</span></a>
-    </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="<?php echo base_url('auth/register') ?>">
+                <i class="fa fa-fw fa-user"></i>
+                <span>Tambah User</span></a>
+        </li>
+    <?php
+    }
+    ?>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

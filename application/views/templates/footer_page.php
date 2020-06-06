@@ -35,7 +35,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="<?= base_url('auth/logout') ?>">Logout</a>
             </div>
         </div>
     </div>
@@ -173,14 +173,14 @@
                 '<label for="fotoPenghasilan">Foto Bukti Penghasilan</label>' +
                 '<div class="custom-file">' +
                 '<input type="file" class="custom-file-input" name="fotoPenghasilan" id="fotoPenghasilan" required>' +
-                '<label class="custom-file-label" for="fotoPenghasilan">Masukkan Bukti Penghasilan</label>'+
+                '<label class="custom-file-label" for="fotoPenghasilan">Masukkan Bukti Penghasilan</label>' +
                 '</div>' +
                 '<small class="text-danger">*Ukuran maksimal 5 MB</small>' +
                 '</div>' +
                 '</div>' +
                 '</div>');
 
-                
+
             //upload file
             $(".custom-file-input").on("change", function() {
                 var fileName = $(this).val().split("\\").pop();
@@ -216,6 +216,12 @@
         var y = document.getElementById("kdSurat");
         y.value = x.value.substr(0, 2);
     };
+
+    function getTextEdit() {
+        var x = document.getElementById("indeksEdit");
+        var y = document.getElementById("kdSuratEdit");
+        y.value = x.value.substr(0, 2);
+    }
 
     function previewImage() {
         document.getElementById("image-preview").style.display = "block";

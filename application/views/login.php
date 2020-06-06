@@ -25,10 +25,10 @@
 
                   <?php echo $this->session->flashdata('message'); ?>
 
-                  <form class="user" method="post" action="<?php echo base_url('auth/login'); ?>">
+                  <form class="user" method="post" action="<?php echo base_url('auth'); ?>">
                     <div class="form-group">
-                      <input type="email" name="email" class="form-control form-control-user" id="email" placeholder="Email" value="<?php set_value('email'); ?>">
-                      <?php echo form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                      <input type="text" name="username" class="form-control form-control-user" id="username" placeholder="Username" value="<?php set_value('username'); ?>">
+                      <?php echo form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="form-group">
                       <input type="password" name="password" class="form-control form-control-user" id="password" placeholder="Password">
