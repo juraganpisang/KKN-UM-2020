@@ -28,7 +28,7 @@
                                         <img id="image-preview" style="display: block;" alt="image preview" height="200" src="<?php echo base_url('assets/file/fotoKK/') . ($this->input->post('foto_kk') ? $this->input->post('foto_kk') : $kk['foto_kk']); ?>" />
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="foto_kk" id="customFile" onchange="previewImage();">
-                                            <label class="custom-file-label" for="customFile">Masukkan Arsip Disini</label>
+                                            <label class="custom-file-label" for="customFile">Masukkan Foto KK Disini</label>
                                         </div>
                                         <small class="text-danger">*Ukuran maksimal 5 MB</small>
                                     </div>

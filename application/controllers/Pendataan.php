@@ -238,7 +238,7 @@ class Pendataan extends CI_Controller
 
     public function manajemen_data()
     {
-        $data['title'] = "Manajemen Data Penduduk";
+        $data['title'] = "MANAJEMEN DATA PENDUDUK";
         $data['kepala'] = $this->pendataan_model->getAllKK();
 
         $this->load->view('templates/header_page');

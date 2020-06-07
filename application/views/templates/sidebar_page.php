@@ -25,7 +25,7 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
+                <h6 class="collapse-header">Fitur :</h6>
                 <a class="collapse-item" href="<?= base_url('arsip/arsip_baru'); ?>">Arsip Baru</a>
                 <a class="collapse-item" href="<?= base_url('arsip/peminjaman'); ?>">Peminjaman</a>
                 <a class="collapse-item" href="<?= base_url('arsip/manajemen_arsip'); ?>">Manajemen Arsip</a>
@@ -41,7 +41,7 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Utilities:</h6>
+                <h6 class="collapse-header">Fitur :</h6>
                 <a class="collapse-item" href="<?= base_url('pendataan/input_data') ?>">Input Data</a>
                 <a class="collapse-item" href="<?= base_url('pendataan/manajemen_data') ?>">Manajemen Data</a>
             </div>
