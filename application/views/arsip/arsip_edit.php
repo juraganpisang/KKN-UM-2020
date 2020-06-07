@@ -10,6 +10,9 @@
         <div class="col">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
+                
+                <?php echo $this->session->flashdata('message'); ?>
+                    
                     <?php
                     foreach ($dataArsip as $row) {
                     ?>

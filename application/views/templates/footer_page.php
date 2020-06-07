@@ -115,13 +115,13 @@
                 '<div class="col form-group">' +
                 '<label>Jenis Kelamin</label>' +
                 '<div class="form-check">' +
-                '<input type="radio" id="laki'+i+'" value="Laki-Laki" name="jenkel'+i+'" class="form-check-input">' +
+                '<input type="radio" id="laki'+i+'" value="L" name="jenkel'+i+'" class="form-check-input">' +
                 '<label class="form-check-label" for="laki'+i+'">' +
                 'Laki Laki' +
                 '</label>' +
                 '</div>' +
                 '<div class="form-check">' +
-                '<input type="radio" id="perempuan'+i+'" value="Perempuan" name="jenkel'+i+'" class="form-check-input">' +
+                '<input type="radio" id="perempuan'+i+'" value="P" name="jenkel'+i+'" class="form-check-input">' +
                 '<label class="form-check-label" for="perempuan'+i+'">' +
                 'Perempuan' +
                 '</label>' +

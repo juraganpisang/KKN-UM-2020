@@ -20,6 +20,9 @@
                             <i class="fa fa-edit fa-lg text-primary"></i> : <small>Jika Ada Perubahan Data</small>
                         </div>
                     </div>
+                    
+                    <?php echo $this->session->flashdata('message'); ?>
+                    
                     <table class="table table-bordered" id="table_peminjam" width="100%" cellspacing="0">
                         <thead>
                             <tr>

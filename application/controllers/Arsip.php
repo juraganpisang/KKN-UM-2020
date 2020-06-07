@@ -9,7 +9,7 @@ class Arsip extends CI_Controller
         parent::__construct();
 
         if (!$this->session->has_userdata('id')) {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Anda harus terlebih dahulu. </div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Anda harus login terlebih dahulu. </div>');
             redirect('auth');
         }
     }
@@ -93,7 +93,9 @@ class Arsip extends CI_Controller
         ];
         $this->arsip_model->tambahArsip($data);
 
-        redirect('arsip/manajemen_arsip');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Tambah Arsip Berhasil. </div>');
+
+        redirect('arsip/arsip_baru');
     }
 
     public function peminjaman()
@@ -124,6 +126,8 @@ class Arsip extends CI_Controller
         ];
 
         $this->arsip_model->createPeminjam($data);
+        
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Tambah Peminjam Berhasil. </div>');
 
         redirect('arsip/peminjaman');
     }
@@ -145,12 +149,16 @@ class Arsip extends CI_Controller
 
         $this->arsip_model->updatePeminjam($id, $data);
 
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Edit Peminjam Berhasil. </div>');
+
         redirect('arsip/peminjaman');
     }
 
     public function hapusPeminjam($id)
     {
         $this->arsip_model->deletePeminjam($id);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Hapus Peminjam Berhasil. </div>');
 
         redirect('arsip/peminjaman');
     }
@@ -237,6 +245,8 @@ class Arsip extends CI_Controller
         ];
 
         $this->arsip_model->editArsip($id, $data);
+        
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Edit Arsip Berhasil. </div>');
 
         redirect('arsip/manajemen_arsip');
     }
@@ -244,6 +254,8 @@ class Arsip extends CI_Controller
     public function hapusArsip($id)
     {
         $this->arsip_model->deleteArsip($id);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Hapus Arsip Berhasil. </div>');
 
         redirect('arsip/manajemen_arsip');
     }

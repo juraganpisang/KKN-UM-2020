@@ -10,6 +10,9 @@
         <div class="col">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
+                
+                <?php echo $this->session->flashdata('message'); ?>
+                    
                     <!-- form start -->
                     <form action="<?= base_url('pendataan/do_tambah') ?>" role="form" method="post" enctype="multipart/form-data">
                         <!-- BEDA KONTEN -->
@@ -42,12 +45,12 @@
                                                 <label>Desa</label>
                                                 <select name="desa" class="form-control">
                                                     <option value="">- Pilih -</option>
-                                                    <option value="1">Desa 1</option>
-                                                    <option value="2">Desa 2</option>
-                                                    <option value="3">Desa 3</option>
-                                                    <option value="4">Desa 4</option>
-                                                    <option value="5">Desa 5</option>
-                                                    <option value="6">Desa 6</option>
+                                                    <option value="Desa 1">Desa 1</option>
+                                                    <option value="Desa 2">Desa 2</option>
+                                                    <option value="Desa 3">Desa 3</option>
+                                                    <option value="Desa 4">Desa 4</option>
+                                                    <option value="Desa 5">Desa 5</option>
+                                                    <option value="Desa 6">Desa 6</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -113,13 +116,13 @@
                                             <div class="col-6 form-group">
                                                 <label>Jenis Kelamin</label>
                                                 <div class="form-check">
-                                                    <input type="radio" id="laki" value="Laki-Laki" name="jenkel0"  class="form-check-input">
+                                                    <input type="radio" id="laki" value="L" name="jenkel0"  class="form-check-input">
                                                     <label class="form-check-label" for="laki">
                                                         Laki Laki
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input type="radio" id="perempuan" value="Perempuan" name="jenkel0" class="form-check-input">
+                                                    <input type="radio" id="perempuan" value="P" name="jenkel0" class="form-check-input">
                                                     <label class="form-check-label" for="perempuan">
                                                         Perempuan
                                                     </label>

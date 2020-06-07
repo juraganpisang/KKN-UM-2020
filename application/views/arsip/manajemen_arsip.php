@@ -22,6 +22,8 @@
                         </div>
                     </div>
 
+                    <?php echo $this->session->flashdata('message'); ?>
+
                     <!-- <div class="table-responsive"> -->
                     <table class="table table-bordered" id="table_arsip" width="100%" cellspacing="0">
                         <thead>
@@ -99,7 +101,7 @@
                                                 <?php
                                                 } else {
                                                 ?>
-                                                <a class="text-primary" href="<?= base_url('assets/file/scanArsip/' . $ars->scan_arsip) ?>"> Klik untuk download file </a>
+                                                    <a class="text-primary" href="<?= base_url('assets/file/scanArsip/' . $ars->scan_arsip) ?>"> Klik untuk download file </a>
                                                     <img class="img" style="max-width: 100%;" src="<?= base_url('assets/file/scanArsip/' . $ars->scan_arsip) ?>" />
                                                 <?php
                                                 }
