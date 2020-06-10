@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2020 at 10:20 AM
+-- Generation Time: Jun 10, 2020 at 11:38 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -85,7 +85,8 @@ CREATE TABLE `tbl_kartukeluarga` (
   `alamat` text NOT NULL,
   `desa` varchar(100) NOT NULL,
   `rt` varchar(10) NOT NULL,
-  `rw` varchar(10) NOT NULL
+  `rw` varchar(10) NOT NULL,
+  `tanggal_simpan` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

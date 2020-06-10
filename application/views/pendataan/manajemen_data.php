@@ -40,6 +40,7 @@
                                 <th>Desa</th>
                                 <th>RT</th>
                                 <th>RW</th>
+                                <th>Tanggal Simpan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -61,6 +62,7 @@
                                     <td><?php echo $kpl->desa; ?></td>
                                     <td><?php echo $kpl->rt; ?></td>
                                     <td><?php echo $kpl->rw; ?></td>
+                                    <td><?php echo $kpl->tanggal_simpan; ?></td>
                                 </tr>
 
                                 <!-- MODAL SCAN KK -->
