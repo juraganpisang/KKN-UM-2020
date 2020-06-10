@@ -40,85 +40,58 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>Desa</label>
-                                                <select name="desa" class="form-control">
-                                                    <option <?php if ($kk['desa'] == "") {
-                                                                echo "selected";
-                                                            } ?> value="">- Pilih -</option>
-                                                    <option <?php if ($kk['desa'] == "Desa 1") {
-                                                                echo "selected";
-                                                            } ?> value="Desa 1">Desa 1</option>
-                                                    <option <?php if ($kk['desa'] == "Desa 2") {
-                                                                echo "selected";
-                                                            } ?> value="Desa 2">Desa 2</option>
-                                                    <option <?php if ($kk['desa'] == "Desa 3") {
-                                                                echo "selected";
-                                                            } ?> value="Desa 3">Desa 3</option>
-                                                    <option <?php if ($kk['desa'] == "Desa 4") {
-                                                                echo "selected";
-                                                            } ?> value="Desa 4">Desa 4</option>
-                                                    <option <?php if ($kk['desa'] == "Desa 5") {
-                                                                echo "selected";
-                                                            } ?> value="Desa 5">Desa 5</option>
-                                                    <option <?php if ($kk['desa'] == "Desa 6") {
-                                                                echo "selected";
-                                                            } ?> value="Desa 6">Desa 6</option>
-                                                </select>
+                                                <?php
+                                                $desa = array(
+                                                    "" => "- Pilih -",
+                                                    "Desa Trajeng" => "Desa Trajeng",
+                                                    "Desa Krajan" => "Desa Krajan",
+                                                    "Desa Robyong" => "Desa Robyong"
+                                                );
+
+                                                echo form_dropdown('desa', $desa, $kk['desa'], 'class="form-control" id="desa" required');
+                                                ?>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>RW</label>
-                                                <select name="rw" class="form-control">
-                                                    <option <?php if ($kk['rw'] == "") {
-                                                                echo "selected";
-                                                            } ?> value="">- Pilih -</option>
-                                                    <option <?php if ($kk['rw'] == 1) {
-                                                                echo "selected";
-                                                            } ?> value="1">1</option>
-                                                    <option <?php if ($kk['rw'] == "2") {
-                                                                echo "selected";
-                                                            } ?> value="2">2</option>
-                                                    <option <?php if ($kk['rw'] == "3") {
-                                                                echo "selected";
-                                                            } ?> value="3">3</option>
-                                                    <option <?php if ($kk['rw'] == "4") {
-                                                                echo "selected";
-                                                            } ?> value="4">4</option>
-                                                    <option <?php if ($kk['rw'] == "5") {
-                                                                echo "selected";
-                                                            } ?> value="5">5</option>
-                                                    <option <?php if ($kk['rw'] == "6") {
-                                                                echo "selected";
-                                                            } ?> value="6">6</option>
-                                                </select>
+                                                <?php
+                                                $rw = array(
+                                                    "" => "- Pilih -",
+                                                    "1" => "RW 1",
+                                                    "2" => "RW 2",
+                                                    "3" => "RW 3",
+                                                    "4" => "RW 4",
+                                                    "5" => "RW 5",
+                                                    "6" => "RW 6",
+                                                    "7" => "RW 7",
+                                                    "8" => "RW 8",
+                                                    "9" => "RW 9",
+                                                    "10" => "RW 10",
+                                                    "11" => "RW 11",
+                                                    "12" => "RW 12",
+                                                    "13" => "RW 13",
+                                                    "14" => "RW 14",
+                                                );
+
+                                                echo form_dropdown('rw', $rw, $kk['rw'], 'class="form-control" id="rw" required');
+                                                ?>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label>RT</label>
-                                                <select name="rt" class="form-control">
-                                                    <option <?php if ($kk['rt'] == "") {
-                                                                echo "selected";
-                                                            } ?> value="">- Pilih -</option>
-                                                    <option <?php if ($kk['rt'] == "1") {
-                                                                echo "selected";
-                                                            } ?> value="1">1</option>
-                                                    <option <?php if ($kk['rt'] == "2") {
-                                                                echo "selected";
-                                                            } ?> value="2">2</option>
-                                                    <option <?php if ($kk['rt'] == "3") {
-                                                                echo "selected";
-                                                            } ?> value="3">3</option>
-                                                    <option <?php if ($kk['rt'] == "4") {
-                                                                echo "selected";
-                                                            } ?> value="4">4</option>
-                                                    <option <?php if ($kk['rt'] == "5") {
-                                                                echo "selected";
-                                                            } ?> value="5">5</option>
-                                                    <option <?php if ($kk['rt'] == "6") {
-                                                                echo "selected";
-                                                            } ?> value="6">6</option>
-                                                </select>
+                                                <?php
+                                                $rt = array(
+                                                    "" => "- Pilih -",
+                                                    "1" => "RT 1",
+                                                    "2" => "RT 2",
+                                                    "3" => "RT 3",
+                                                    "4" => "RT 4"
+                                                );
+
+                                                echo form_dropdown('rt', $rt, $kk['rt'], 'class="form-control" id="rt" required');
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
@@ -134,7 +107,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Nama</label>
-                                                <input name="nama[]" type="text" class="form-control" placeholder="Masukkan Nama" value="<?= $agt->nama; ?>">
+                                                <input name="nama[]" type="text" class="form-control" placeholder="Masukkan Nama" value="<?= $agt->nama; ?>" required>
                                             </div>
                                             <div class="row">
                                                 <div class="col form-group">
@@ -256,7 +229,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="fotoPenghasilan0">Foto Bukti Penghasilan</label>
-                                                <img id="image-preview" style="display: block;" alt="image preview" height="200" src="<?php echo base_url('assets/file/fotoPenghasilan/').($this->input->post('foto_penghasilan') ? $this->input->post('scan_arsip') : $agt->foto_penghasilan); ?>"/>
+                                                <img id="image-preview" style="display: block;" alt="Tidak Ada Foto" height="200" src="<?php echo base_url('assets/file/fotoPenghasilan/').($this->input->post('foto_penghasilan') ? $this->input->post('scan_arsip') : $agt->foto_penghasilan); ?>"/>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" name="fotoPenghasilan0" id="fotoPenghasilan0">
                                                     <label class="custom-file-label" for="fotoPenghasilan0">Masukkan Bukti Penghasilan</label>

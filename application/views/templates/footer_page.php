@@ -86,11 +86,11 @@
                 '</div>' +
                 '<div class="form-group">' +
                 '<label>NIK</label>' +
-                '<input name="nik[]" type="text" class="form-control" placeholder="Masukkan NIK" >' +
+                '<input name="nik[]" type="text" class="form-control" placeholder="Masukkan NIK" required>' +
                 '</div>' +
                 '<div class="form-group">' +
                 '<label>Nama</label>' +
-                '<input name="nama[]" type="text" class="form-control" placeholder="Masukkan Nama" >' +
+                '<input name="nama[]" type="text" class="form-control" placeholder="Masukkan Nama" required>' +
                 '</div>' +
                 '<div class="row">' +
                 '<div class="col form-group">' +

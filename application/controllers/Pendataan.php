@@ -67,7 +67,6 @@ class Pendataan extends CI_Controller
         // MEMASUKKAN KE TABEL ANGGOTA KELUARGA
         $nik = $this->input->post('nik');
 
-        echo sizeof($nik);
         for ($x = 0; $x < sizeof($nik); $x++) {
             //kk
             $config = array();
@@ -86,11 +85,9 @@ class Pendataan extends CI_Controller
                     $fotoPenghasilan[$x] = $this->penghasilanUpload->data('file_name');
                 } else {
                     $fotoPenghasilan[$x] = "";
-                    $this->penghasilanUpload->display_errors();
                 }
             } else {
                 $fotoPenghasilan[$x] = "";
-                $this->penghasilanUpload->display_errors();
             }
 
             $data = [

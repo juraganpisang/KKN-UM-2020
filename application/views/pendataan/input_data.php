@@ -10,9 +10,9 @@
         <div class="col">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
-                
-                <?php echo $this->session->flashdata('message'); ?>
-                    
+
+                    <?php echo $this->session->flashdata('message'); ?>
+
                     <!-- form start -->
                     <form action="<?= base_url('pendataan/do_tambah') ?>" role="form" method="post" enctype="multipart/form-data">
                         <!-- BEDA KONTEN -->
@@ -37,13 +37,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Alamat</label>
-                                        <textarea name="alamat" class="form-control" placeholder="Masukkan Alamat"></textarea>
+                                        <textarea name="alamat" class="form-control" placeholder="Masukkan Alamat" required></textarea>
                                     </div>
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Desa</label>
-                                                <select name="desa" class="form-control">
+                                                <label for="desa">Desa</label>
+                                                <!-- <select name="desa" class="form-control">
                                                     <option value="">- Pilih -</option>
                                                     <option value="Desa 1">Desa 1</option>
                                                     <option value="Desa 2">Desa 2</option>
@@ -51,35 +51,59 @@
                                                     <option value="Desa 4">Desa 4</option>
                                                     <option value="Desa 5">Desa 5</option>
                                                     <option value="Desa 6">Desa 6</option>
-                                                </select>
+                                                </select> -->
+                                                <?php
+                                                $desa = array(
+                                                    "" => "- Pilih -",
+                                                    "Desa Trajeng" => "Desa Trajeng",
+                                                    "Desa Krajan" => "Desa Krajan",
+                                                    "Desa Robyong" => "Desa Robyong"
+                                                );
+
+                                                echo form_dropdown('desa', $desa, false, 'class="form-control" id="desa" required');
+                                                ?>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>RW</label>
-                                                <select name="rw" class="form-control">
-                                                    <option value="">- Pilih -</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                </select>
+                                                <label for="rw">RW</label>
+                                                <?php
+                                                $rw = array(
+                                                    "" => "- Pilih -",
+                                                    "1" => "RW 1",
+                                                    "2" => "RW 2",
+                                                    "3" => "RW 3",
+                                                    "4" => "RW 4",
+                                                    "5" => "RW 5",
+                                                    "6" => "RW 6",
+                                                    "7" => "RW 7",
+                                                    "8" => "RW 8",
+                                                    "9" => "RW 9",
+                                                    "10" => "RW 10",
+                                                    "11" => "RW 11",
+                                                    "12" => "RW 12",
+                                                    "13" => "RW 13",
+                                                    "14" => "RW 14",
+                                                );
+
+                                                echo form_dropdown('rw', $rw, false, 'class="form-control" id="rw" required');
+                                                ?>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>RT</label>
-                                                <select name="rt" class="form-control">
-                                                    <option value="">- Pilih -</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                </select>
+                                                <label for="rt">RT</label>
+                                                <?php
+                                                $rt = array(
+                                                    "" => "- Pilih -",
+                                                    "1" => "RT 1",
+                                                    "2" => "RT 2",
+                                                    "3" => "RT 3",
+                                                    "4" => "RT 4"
+                                                );
+
+                                                echo form_dropdown('rt', $rt, false, 'class="form-control" id="rt" required');
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
@@ -91,7 +115,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Nama</label>
-                                            <input name="nama[]" type="text" class="form-control" placeholder="Masukkan Nama">
+                                            <input name="nama[]" type="text" class="form-control" placeholder="Masukkan Nama" required>
                                         </div>
                                         <div class="row">
                                             <div class="col form-group">
@@ -105,7 +129,7 @@
                                             <div class="col form-group">
                                                 <label>Tanggal Lahir</label>
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control tanggalLahir" name="tanggalLahir[]" placeholder="Masukkan Tanggal Lahir" >
+                                                    <input type="text" class="form-control tanggalLahir" name="tanggalLahir[]" placeholder="Masukkan Tanggal Lahir">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                     </div>
@@ -116,7 +140,7 @@
                                             <div class="col-6 form-group">
                                                 <label>Jenis Kelamin</label>
                                                 <div class="form-check">
-                                                    <input type="radio" id="laki" value="L" name="jenkel0"  class="form-check-input">
+                                                    <input type="radio" id="laki" value="L" name="jenkel0" class="form-check-input">
                                                     <label class="form-check-label" for="laki">
                                                         Laki Laki
                                                     </label>
@@ -154,7 +178,7 @@
                                                     <option value="Kawin">Kawin</option>
                                                     <option value="Cerai Hidup">Cerai Hidup</option>
                                                     <option value="Cerai Mati">Cerai Mati</option>
-                                                </select>    
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="row">
