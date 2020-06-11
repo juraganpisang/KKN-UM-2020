@@ -42,7 +42,7 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
+<script src="<?= base_url('assets/js/jquery-3.5.1.js'); ?>"></script>
 <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 
 <!-- Core plugin JavaScript-->
@@ -52,15 +52,150 @@
 <script src="<?= base_url('assets/js/sb-admin-2.min.js'); ?>"></script>
 
 <!-- Page level plugins -->
-<script src="<?= base_url('assets/vendor/datatables/jquery.dataTables.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/datatables/jquery.dataTables.min.js') ?>"></script>
+<script src="<?= base_url('assets/js/dataTables.searchPanes.min.js'); ?>"></script>
+<script src="<?= base_url('assets/js/dataTables.select.min.js'); ?>"></script>
 
 <script src="<?= base_url('assets/vendor/datatables/dataTables.bootstrap4.min.js'); ?>"></script>
 
 <script src="<?= base_url('assets/js/bootstrap-datepicker.min.js'); ?>"></script>
-
 <script>
     $(document).ready(function() {
 
+        $('#table_manajemen').DataTable({
+            'scrollX': true,
+            searchPane: {
+                dtOpts: {
+                    dom: 'tp',
+                    paging: 'true',
+                    pagingType: 'numbers',
+                    searching: false
+                }
+            },
+            dom: 'Pfrtip',
+            columnDefs: [{
+                searchPanes: {
+                    header: 'Aksi',
+                    show: 'false'
+                },
+                targets: [0]
+            }]
+        });
+
+        //datatables
+        // table = $('#table_manajemen').DataTable({
+
+        //     "processing": true, //Feature control the processing indicator.
+        //     "serverSide": true, //Feature control DataTables' server-side processing mode.
+        //     "order": [], //Initial no order.
+
+        //     // Load data for the table's content from an Ajax source
+        //     "ajax": {
+        //         "url": "<?php echo site_url('pendataan/ajax_list') ?>",
+        //         "type": "POST",
+        //         "data": function(data) {
+        //             data.searchNama = $('#nama').val();
+        //             data.searchUmur = $('#umur').val();
+        //             data.searchJenkel = $('#jenkel').val();
+        //             data.searchStatus = $('#status_kawin').val();
+        //             data.searchRt = $('#rt').val();
+        //             data.searchRw = $('#rw').val();
+        //             data.searchNik = $('#nik').val();
+        //             data.searchPendidikan = $('#pendidikan').val();
+        //             data.searchPekerjaan = $('#pekerjaan').val();
+        //             data.searchPenghasilan = $('#penghasilan').val();
+        //             data.searchDesa = $('#desa').val();
+        //             data.searchAgama = $('#agama').val();
+        //         }
+        //     },
+
+        //     //Set column definition initialisation properties.
+        //     "columnDefs": [{
+        //         "targets": [0], //first column / numbering column
+        //         "orderable": false, //set not orderable
+        //     }, ],
+
+        // });
+
+        // $('#btn-filter').click(function() { //button filter event click
+        //     table.ajax.reload(); //just reload table
+        // });
+        // $('#btn-reset').click(function() { //button reset event click
+        //     $('#form-filter')[0].reset();
+        //     table.ajax.reload(); //just reload table
+        // });
+
+        // var userDataTable = $('#tableManajemen').DataTable({
+        //     'scrollX' : true,
+        //     'processing': true,
+        //     'serverSide': true,
+        //     'serverMethod': 'post',
+        //     //'searching': false, // Remove default Search Control
+        //     'ajax': {
+        //         'url': '<?= base_url() ?>pendataan/fetchData',
+        //         'data': function(data) {
+        //             data.searchNama = $('#nama').val();
+        //             data.searchUmur = $('#umur').val();
+        //             data.searchJenkel = $('#jenkel').val();
+        //             data.searchStatus = $('#status_kawin').val();
+        //             data.searchRt = $('#rt').val();
+        //             data.searchRw = $('#rw').val();
+        //             data.searchNik = $('#nik').val();
+        //             data.searchPendidikan = $('#pendidikan').val();
+        //             data.searchPekerjaan = $('#pekerjaan').val();
+        //             data.searchPenghasilan = $('#penghasilan').val();
+        //             data.searchDesa = $('#desa').val();
+        //             data.searchAgama = $('#agama').val();
+        //         }
+        //     },
+        //     'columns': [{
+        //             data: 'nama'
+        //         },
+        //         {
+        //             data: 'umur'
+        //         },
+        //         {
+        //             data: 'jenkel'
+        //         },
+        //         {
+        //             data: 'status_kawin'
+        //         },
+        //         {
+        //             data: 'rt'
+        //         },
+        //         {
+        //             data: 'rw'
+        //         },
+        //         {
+        //             data: 'nik'
+        //         },
+        //         {
+        //             data: 'pendidikan'
+        //         },
+        //         {
+        //             data: 'pekerjaan'
+        //         },
+        //         {
+        //             data: 'penghasilan'
+        //         },
+        //         {
+        //             data: 'desa'
+        //         },
+        //         {
+        //             data: 'agama'
+        //         },
+        //     ]
+        // });
+
+        // $('#jenkel,#agama').change(function() {
+        //     userDataTable.draw();
+        // });
+        // //input biasa
+        // $('#nama').keyup(function() {
+        //     userDataTable.draw();
+        // });
+
+        //bedoooo
         $('#table_peminjam').DataTable({
             "scrollX": true
         });
@@ -115,14 +250,14 @@
                 '<div class="col form-group">' +
                 '<label>Jenis Kelamin</label>' +
                 '<div class="form-check">' +
-                '<input type="radio" id="laki'+i+'" value="L" name="jenkel'+i+'" class="form-check-input">' +
-                '<label class="form-check-label" for="laki'+i+'">' +
+                '<input type="radio" id="laki' + i + '" value="Laki-Laki" name="jenkel' + i + '" class="form-check-input">' +
+                '<label class="form-check-label" for="laki' + i + '">' +
                 'Laki Laki' +
                 '</label>' +
                 '</div>' +
                 '<div class="form-check">' +
-                '<input type="radio" id="perempuan'+i+'" value="P" name="jenkel'+i+'" class="form-check-input">' +
-                '<label class="form-check-label" for="perempuan'+i+'">' +
+                '<input type="radio" id="perempuan' + i + '" value="Perempuan" name="jenkel' + i + '" class="form-check-input">' +
+                '<label class="form-check-label" for="perempuan' + i + '">' +
                 'Perempuan' +
                 '</label>' +
                 '</div>' +
@@ -130,7 +265,7 @@
                 '<div class="col form-group">' +
                 '<label>Agama</label>' +
                 '<select name="agama[]" class="form-control">' +
-                '<option value="">- Pilih -</option>'+
+                '<option value="">- Pilih -</option>' +
                 '<option value="Islam">Islam</option>' +
                 '<option value="Hindu">Hindu</option>' +
                 '<option value="Kristen">Kristen</option>' +
@@ -148,7 +283,7 @@
                 '<div class="col form-group">' +
                 '<label>Status Perkawinan</label>' +
                 '<select name="status_kawin[]" class="form-control" >' +
-                '<option value="">- Pilih -</option>'+
+                '<option value="">- Pilih -</option>' +
                 '<option value="Belum Kawin">Belum Kawin</option>' +
                 '<option value="Kawin">Kawin</option>' +
                 '<option value="Cerai Hidup">Cerai Hidup</option>' +
@@ -173,10 +308,10 @@
                 '</div>' +
                 '</div>' +
                 '<div class="form-group">' +
-                '<label for="fotoPenghasilan'+i+'">Foto Bukti Penghasilan</label>' +
+                '<label for="fotoPenghasilan' + i + '">Foto Bukti Penghasilan</label>' +
                 '<div class="custom-file">' +
-                '<input type="file" class="custom-file-input" name="fotoPenghasilan'+i+'" id="fotoPenghasilan'+i+'" >' +
-                '<label class="custom-file-label" for="fotoPenghasilan'+i+'">Masukkan Bukti Penghasilan</label>' +
+                '<input type="file" class="custom-file-input" name="fotoPenghasilan' + i + '" id="fotoPenghasilan' + i + '" >' +
+                '<label class="custom-file-label" for="fotoPenghasilan' + i + '">Masukkan Bukti Penghasilan</label>' +
                 '</div>' +
                 '<small class="text-danger">*Ukuran maksimal 5 MB</small>' +
                 '</div>' +

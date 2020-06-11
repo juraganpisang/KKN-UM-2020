@@ -87,7 +87,8 @@
                                                     "1" => "RT 1",
                                                     "2" => "RT 2",
                                                     "3" => "RT 3",
-                                                    "4" => "RT 4"
+                                                    "4" => "RT 4",
+                                                    "5" => "RT 5"
                                                 );
 
                                                 echo form_dropdown('rt', $rt, $kk['rt'], 'class="form-control" id="rt" required');
@@ -132,7 +133,7 @@
                                                 <div class="col-6 form-group">
                                                     <label>Jenis Kelamin</label>
                                                     <div class="form-check">
-                                                        <input type="radio" id="laki0" value="L" name="jenkel0" class="form-check-input" <?php if ($agt->jenkel == "L") {
+                                                        <input type="radio" id="laki0" value="Laki-Laki" name="jenkel0" class="form-check-input" <?php if ($agt->jenkel == "Laki-Laki") {
                                                                                                                                                 echo "checked";
                                                                                                                                             } ?>>
                                                         <label class="form-check-label" for="laki0">
@@ -140,7 +141,7 @@
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input type="radio" id="perempuan0" value="P" name="jenkel0" class="form-check-input" <?php if ($agt->jenkel == "P") {
+                                                        <input type="radio" id="perempuan0" value="Perempuan" name="jenkel0" class="form-check-input" <?php if ($agt->jenkel == "Perempuan") {
                                                                                                                                                     echo "checked";
                                                                                                                                                 } ?>>
                                                         <label class="form-check-label" for="perempuan0">

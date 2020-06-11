@@ -64,11 +64,7 @@
             <tr>
                 <td>Jenis Kelamin</td>
                 <td>
-                    <?php if ($row->jenkel == "L") {
-                        echo "Laki - Laki";
-                    } else {
-                        echo "Perempuan";
-                    } ?>
+                    <?= $row->jenkel ?>
                 </td>
             </tr>
             <tr>

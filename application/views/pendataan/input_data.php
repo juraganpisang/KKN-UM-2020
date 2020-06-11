@@ -99,7 +99,8 @@
                                                     "1" => "RT 1",
                                                     "2" => "RT 2",
                                                     "3" => "RT 3",
-                                                    "4" => "RT 4"
+                                                    "4" => "RT 4",
+                                                    "5" => "RT 5"
                                                 );
 
                                                 echo form_dropdown('rt', $rt, false, 'class="form-control" id="rt" required');
@@ -140,13 +141,13 @@
                                             <div class="col-6 form-group">
                                                 <label>Jenis Kelamin</label>
                                                 <div class="form-check">
-                                                    <input type="radio" id="laki" value="L" name="jenkel0" class="form-check-input">
+                                                    <input type="radio" id="laki" value="Laki-Laki" name="jenkel0" class="form-check-input">
                                                     <label class="form-check-label" for="laki">
                                                         Laki Laki
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input type="radio" id="perempuan" value="P" name="jenkel0" class="form-check-input">
+                                                    <input type="radio" id="perempuan" value="Perempuan" name="jenkel0" class="form-check-input">
                                                     <label class="form-check-label" for="perempuan">
                                                         Perempuan
                                                     </label>

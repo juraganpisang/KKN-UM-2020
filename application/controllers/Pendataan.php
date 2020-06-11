@@ -236,13 +236,60 @@ class Pendataan extends CI_Controller
     public function manajemen_data()
     {
         $data['title'] = "MANAJEMEN DATA PENDUDUK";
-        $data['kepala'] = $this->pendataan_model->getAllKK();
+        // $data['kepala'] = $this->pendataan_model->getAllKK();
+        $data['data'] = $this->pendataan_model->getAllData();
 
         $this->load->view('templates/header_page');
         $this->load->view('templates/sidebar_page');
         $this->load->view('templates/topbar_page');
         $this->load->view('pendataan/manajemen_data', $data);
         $this->load->view('templates/footer_page');
+    }
+
+    public function fetchData()
+    {
+        // POST data
+        $postData = $this->input->post();
+
+        // Get data
+        $data = $this->pendataan_model->getFilter($postData);
+
+        echo json_encode($data);
+    }
+
+    public function ajaxList()
+    {
+        $list = $this->pendataan->get_datatables();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $lst) {
+            $no++;
+            $row = array();
+            $row[] = $no;
+            $row[] = $lst->nama;
+            $row[] = $lst->umur;
+            $row[] = $lst->jenkel;
+            $row[] = $lst->status_kawin;
+            $row[] = $lst->rt;
+            $row[] = $lst->rw;
+            $row[] = $lst->nik;
+            $row[] = $lst->pendidikan;
+            $row[] = $lst->pekerjaan;
+            $row[] = $lst->penghasilan;
+            $row[] = $lst->desa;
+            $row[] = $lst->agama;
+
+            $data[] = $row;
+        }
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->pendataan_model->count_all(),
+            "recordsFiltered" => $this->pendataan_model->count_filtered(),
+            "data" => $data,
+        );
+        //output to json format
+        echo json_encode($output);
     }
 
     public function hapusData($no_kk)

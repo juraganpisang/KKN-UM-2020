@@ -13,3 +13,8 @@
 	width: 300px;
 	margin: 15px auto;
 }
+
+div.dt-searchPane div.dataTables_length{
+	float: none;
+	text-align: center;
+}
