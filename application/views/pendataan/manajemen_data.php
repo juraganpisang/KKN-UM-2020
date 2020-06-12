@@ -21,6 +21,7 @@
                                 <th>Status Perkawinan</th>
                                 <th>RT</th>
                                 <th>RW</th>
+                                <th>No KK</th>
                                 <th>NIK</th>
                                 <th>Pendidikan Terakhir</th>
                                 <th>Pekerjaan</th>
@@ -43,6 +44,7 @@
                                     <td><?php echo $row->status_kawin; ?></td>
                                     <td><?php echo $row->rt; ?></td>
                                     <td><?php echo $row->rw; ?></td>
+                                    <td><?php echo $row->no_kk; ?></td>
                                     <td><?php echo $row->nik; ?></td>
                                     <td><?php echo $row->pendidikan; ?></td>
                                     <td><?php echo $row->pekerjaan; ?></td>
@@ -63,6 +65,7 @@
                                 <th>Status Perkawinan</th>
                                 <th>RT</th>
                                 <th>RW</th>
+                                <th>No KK</th>
                                 <th>NIK</th>
                                 <th>Pendidikan Terakhir</th>
                                 <th>Pekerjaan</th>
