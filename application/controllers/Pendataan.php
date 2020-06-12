@@ -258,6 +258,7 @@ class Pendataan extends CI_Controller
         $this->load->view('pendataan/manajemen_kk', $data);
         $this->load->view('templates/footer_page');
     }
+
     public function hapusData($no_kk)
     {
 
@@ -269,6 +270,83 @@ class Pendataan extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Hapus Data Berhasil. </div>');
 
         redirect('pendataan/manajemen_kk');
+    }
+
+    public function edit_anggota($nik)
+    {
+        $data['title'] = "EDIT DATA PENDUDUK";
+        $data['anggota'] = $this->pendataan_model->getEditAnggota($nik);
+
+        $this->load->view('templates/header_page');
+        $this->load->view('templates/sidebar_page');
+        $this->load->view('templates/topbar_page');
+        $this->load->view('pendataan/edit_anggota', $data);
+        $this->load->view('templates/footer_page');
+    }
+
+    public function do_editAnggota($nik)
+    {
+        //diset null upload nya
+        $config = array();
+
+        // MEMASUKKAN KE TABEL ANGGOTA KELUARGA
+        $nik = $this->input->post('nik');
+
+        $data['nik'] = $this->pendataan_model->getUserAnggota($nik);
+        //kk
+        $config = array();
+        $file_penghasilan = $_FILES['fotoPenghasilan']['name'];
+        if ($file_penghasilan) {
+            $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf|doc|docx|dot|txt';
+            $config['max_size']      = '5120';
+            $config['upload_path'] = './assets/file/fotoPenghasilan/';
+            $config['file_name'] = 'Penghasilan' . $this->input->post('nik') . '_' . time() . '_' . date("Y-m-d");
+
+            $this->load->library('upload', $config, 'penghasilanUpload');
+            $this->penghasilanUpload->initialize($config);
+            $upload_penghasilan = $this->penghasilanUpload->do_upload('fotoPenghasilan');
+
+            if ($upload_penghasilan) {
+                $fotoPenghasilan = $this->penghasilanUpload->data('file_name');
+            } else {
+                $fotoPenghasilan = $data['nik']['foto_penghasilan'];
+            }
+        } else {
+            $fotoPenghasilan  = $data['nik']['foto_penghasilan'];
+        }
+
+        $data = [
+            'nik' => $nik,
+            'nama' => $this->input->post('nama'),
+            'umur' => $this->input->post('umur'),
+            'tempat_lahir' => $this->input->post('tempatLahir'),
+            'tanggal_lahir' => $this->input->post('tanggalLahir'),
+            'jenkel' => $this->input->post('jenkel0'),
+            'agama' => $this->input->post('agama'),
+            'pendidikan' => $this->input->post('pendidikan'),
+            'status_kawin' => $this->input->post('status_kawin'),
+            'pekerjaan' => $this->input->post('pekerjaan'),
+            'penghasilan' => $this->input->post('penghasilan'),
+            'foto_penghasilan' => $fotoPenghasilan,
+            'noKK' => $this->input->post('noKK')
+        ];
+
+        //dimasukkan
+        $this->pendataan_model->updateAnggota($data);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Edit Data Berhasil. </div>');
+
+        redirect('pendataan/manajemen_data');
+    }
+
+    public function hapusAnggota($nik)
+    {
+
+        $this->pendataan_model->deleteAnggotaKK($nik);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Hapus Data Berhasil. </div>');
+
+        redirect('pendataan/manajemen_data');
     }
 
     public function cetakData($no_kk)

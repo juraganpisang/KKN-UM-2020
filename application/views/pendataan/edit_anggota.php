@@ -10,119 +10,41 @@
         <div class="col">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
-                    <!-- form start -->
-                    <form action="<?= base_url('pendataan/do_edit/' . $kk['no_kk']) ?>" role="form" method="post" enctype="multipart/form-data">
-                        <!-- BEDA KONTEN -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <!-- general form elements -->
-                                <div class="box box-primary">
-                                    <!-- /.box-header -->
-                                    <h5><b>Kepala Keluarga</b></h5>
-                                    <div class="form-group">
-                                        <label>No KK</label>
-                                        <input name="noKK" type="text" class="form-control" placeholder="Masukkan Nomor KK" value="<?= $kk['no_kk']; ?>" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="customFile">Foto KK</label>
-                                        <img id="image-preview" style="display: block;" alt="image preview" height="200" src="<?php echo base_url('assets/file/fotoKK/') . ($this->input->post('foto_kk') ? $this->input->post('foto_kk') : $kk['foto_kk']); ?>" />
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="foto_kk" id="customFile" onchange="previewImage();">
-                                            <label class="custom-file-label" for="customFile">Masukkan Foto KK Disini</label>
-                                        </div>
-                                        <small class="text-danger">*Ukuran maksimal 5 MB</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Alamat</label>
-                                        <textarea name="alamat" class="form-control" placeholder="Masukkan Alamat"><?= $kk['alamat']; ?></textarea>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label>Dusun</label>
-                                                <?php
-                                                $desa = array(
-                                                    "" => "- Pilih -",
-                                                    "Dusun Trajeng" => "Dusun Trajeng",
-                                                    "Dusun Krajan" => "Dusun Krajan",
-                                                    "Dusun Robyong" => "Dusun Robyong"
-                                                );
 
-                                                echo form_dropdown('desa', $desa, $kk['desa'], 'class="form-control" id="desa" required');
-                                                ?>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label>RW</label>
-                                                <?php
-                                                $rw = array(
-                                                    "" => "- Pilih -",
-                                                    "1" => "RW 1",
-                                                    "2" => "RW 2",
-                                                    "3" => "RW 3",
-                                                    "4" => "RW 4",
-                                                    "5" => "RW 5",
-                                                    "6" => "RW 6",
-                                                    "7" => "RW 7",
-                                                    "8" => "RW 8",
-                                                    "9" => "RW 9",
-                                                    "10" => "RW 10",
-                                                    "11" => "RW 11",
-                                                    "12" => "RW 12",
-                                                    "13" => "RW 13",
-                                                    "14" => "RW 14",
-                                                );
-
-                                                echo form_dropdown('rw', $rw, $kk['rw'], 'class="form-control" id="rw" required');
-                                                ?>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label>RT</label>
-                                                <?php
-                                                $rt = array(
-                                                    "" => "- Pilih -",
-                                                    "1" => "RT 1",
-                                                    "2" => "RT 2",
-                                                    "3" => "RT 3",
-                                                    "4" => "RT 4",
-                                                    "5" => "RT 5"
-                                                );
-
-                                                echo form_dropdown('rt', $rt, $kk['rt'], 'class="form-control" id="rt" required');
-                                                ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div id="anggota">
-
-                                        <?php
-                                        foreach ($anggota as $agt) {
-                                        ?>
+                    <?php
+                    foreach ($anggota as $agt) {
+                    ?>
+                        <!-- form start -->
+                        <form action="<?= base_url('pendataan/do_editAnggota/' . $agt->nik) ?>" role="form" method="post" enctype="multipart/form-data">
+                            <!-- BEDA KONTEN -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- general form elements -->
+                                    <div class="box box-primary">
+                                        <h5>Data Anggota Keluarga</h5>
+                                        <div>
+                                            <input type="hidden" name="noKK" value="<?= $agt->noKK ?>"/>
                                             <div class="form-group">
                                                 <label>NIK</label>
-                                                <input name="nik[]" type="text" class="form-control" placeholder="Masukkan NIK" value="<?= $agt->nik; ?>" required>
+                                                <input name="nik" type="text" class="form-control" placeholder="Masukkan NIK" value="<?= $agt->nik; ?>" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Nama</label>
-                                                <input name="nama[]" type="text" class="form-control" placeholder="Masukkan Nama" value="<?= $agt->nama; ?>" required>
+                                                <input name="nama" type="text" class="form-control" placeholder="Masukkan Nama" value="<?= $agt->nama; ?>" required>
                                             </div>
                                             <div class="row">
                                                 <div class="col form-group">
                                                     <label>Umur</label>
-                                                    <input name="umur[]" type="number" class="form-control" placeholder="Masukkan Umur" value="<?= $agt->umur; ?>">
+                                                    <input name="umur" type="number" class="form-control" placeholder="Masukkan Umur" value="<?= $agt->umur; ?>">
                                                 </div>
                                                 <div class="col form-group">
                                                     <label>Tempat Lahir</label>
-                                                    <input name="tempatLahir[]" type="text" class="form-control" placeholder="Masukkan Tempat Lahir" value="<?= $agt->tempat_lahir; ?>">
+                                                    <input name="tempatLahir" type="text" class="form-control" placeholder="Masukkan Tempat Lahir" value="<?= $agt->tempat_lahir; ?>">
                                                 </div>
                                                 <div class="col form-group">
                                                     <label>Tanggal Lahir</label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control tanggalLahir" name="tanggalLahir[]" placeholder="Masukkan Tanggal Lahir" value="<?= $agt->tanggal_lahir; ?>">
+                                                        <input type="text" class="form-control tanggalLahir" name="tanggalLahir" placeholder="Masukkan Tanggal Lahir" value="<?= $agt->tanggal_lahir; ?>">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                         </div>
@@ -134,16 +56,16 @@
                                                     <label>Jenis Kelamin</label>
                                                     <div class="form-check">
                                                         <input type="radio" id="laki0" value="Laki-Laki" name="jenkel0" class="form-check-input" <?php if ($agt->jenkel == "Laki-Laki") {
-                                                                                                                                                echo "checked";
-                                                                                                                                            } ?>>
+                                                                                                                                                        echo "checked";
+                                                                                                                                                    } ?>>
                                                         <label class="form-check-label" for="laki0">
                                                             Laki Laki
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <input type="radio" id="perempuan0" value="Perempuan" name="jenkel0" class="form-check-input" <?php if ($agt->jenkel == "Perempuan") {
-                                                                                                                                                    echo "checked";
-                                                                                                                                                } ?>>
+                                                                                                                                                            echo "checked";
+                                                                                                                                                        } ?>>
                                                         <label class="form-check-label" for="perempuan0">
                                                             Perempuan
                                                         </label>
@@ -151,7 +73,7 @@
                                                 </div>
                                                 <div class="col-6 form-group">
                                                     <label>Agama</label>
-                                                    <select name="agama[]" class="form-control">
+                                                    <select name="agama" class="form-control">
                                                         <option <?php if ($agt->agama == "") {
                                                                     echo "selected";
                                                                 } ?> value="">- Pilih -</option>
@@ -179,11 +101,11 @@
                                             <div class="row">
                                                 <div class="col form-group">
                                                     <label>Pendidikan Terakhir</label>
-                                                    <input name="pendidikan[]" type="text" class="form-control" placeholder="Masukkan Pendidikan Terakhir" value="<?= $agt->pendidikan; ?>">
+                                                    <input name="pendidikan" type="text" class="form-control" placeholder="Masukkan Pendidikan Terakhir" value="<?= $agt->pendidikan; ?>">
                                                 </div>
                                                 <div class="col form-group">
                                                     <label>Status Perkawinan</label>
-                                                    <select name="status_kawin[]" class="form-control">
+                                                    <select name="status_kawin" class="form-control">
                                                         <option <?php if ($agt->status_kawin == "") {
                                                                     echo "selected";
                                                                 } ?> value="">- Pilih -</option>
@@ -205,11 +127,11 @@
                                             <div class="row">
                                                 <div class="col-6 form-group">
                                                     <label>Pekerjaan</label>
-                                                    <input name="pekerjaan[]" type="text" class="form-control" placeholder="Masukkan Pekerjaan" value=<?= $agt->pekerjaan; ?>>
+                                                    <input name="pekerjaan" type="text" class="form-control" placeholder="Masukkan Pekerjaan" value=<?= $agt->pekerjaan; ?>>
                                                 </div>
                                                 <div class="col-6 form-group">
                                                     <label>Penghasilan Perbulan</label>
-                                                    <select name="penghasilan[]" class="form-control">
+                                                    <select name="penghasilan" class="form-control">
                                                         <option <?php if ($agt->penghasilan == "") {
                                                                     echo "selected";
                                                                 } ?> value="">- Pilih -</option>
@@ -230,26 +152,25 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="fotoPenghasilan0">Foto Bukti Penghasilan</label>
-                                                <img id="image-preview" style="display: block;" alt="Tidak Ada Foto" height="200" src="<?php echo base_url('assets/file/fotoPenghasilan/').($this->input->post('foto_penghasilan') ? $this->input->post('foto_penghasilan') : $agt->foto_penghasilan); ?>"/>
+                                                <img id="image-preview" style="display: block;" alt="Tidak Ada Foto" height="200" src="<?php echo base_url('assets/file/fotoPenghasilan/') . ($this->input->post('foto_penghasilan') ? $this->input->post('foto_penghasilan') : $agt->foto_penghasilan); ?>" />
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" name="fotoPenghasilan0" id="fotoPenghasilan0">
-                                                    <label class="custom-file-label" for="fotoPenghasilan0">Masukkan Bukti Penghasilan</label>
+                                                    <input type="file" class="custom-file-input" name="fotoPenghasilan" id="fotoPenghasilan">
+                                                    <label class="custom-file-label" for="fotoPenghasilan">Masukkan Bukti Penghasilan</label>
                                                 </div>
                                                 <small class="text-danger">*Ukuran maksimal 5 MB</small>
                                             </div>
-                                        <?php
-                                        }
-                                        ?>
-                                    </div>
-                                    <!-- /.box-body -->
-                                    <div class="box-footer">
-                                        <button name="tambah" id="tambah" type="button" class="btn btn-success tambah"><i class="fa fa-plus"></i>Tambah Anggota Keluarga</button>
-                                        <button name="submit" type="submit" class="btn btn-primary">Simpan</button>
+                                        </div>
+                                        <!-- /.box-body -->
+                                        <div class="box-footer">
+                                            <button name="submit" type="submit" class="btn btn-primary">Simpan</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>

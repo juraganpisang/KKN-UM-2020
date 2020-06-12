@@ -14,6 +14,12 @@ class Pendataan_model extends CI_Model
         return $this->db->insert('tbl_anggotakeluarga', $data);
     }
 
+    public function updateAnggota($data)
+    {
+        $this->db->where('nik', $data['nik']);
+        return $this->db->update('tbl_anggotakeluarga', $data);
+    }
+
     //edit tapi dihapus
     public function deleteKK($kk)
     {
@@ -27,10 +33,29 @@ class Pendataan_model extends CI_Model
         return $this->db->delete('tbl_anggotakeluarga');
     }
 
-    public function deleteAnggotaKK($kk)
+    public function deleteAnggotaKK($nik)
     {
-        $this->db->where('noKK', $kk);
-        return $this->db->delete('tbl_anggotakeluarga');
+        //AMBIL DATA KELUARGA DULU
+        $result = $this->db->get_where('tbl_anggotakeluarga', ['nik' => $nik]);
+        $query = $result->row_array();
+
+        //CEK APAKAH DIA DATA TERAKHIR
+        $dataCount = $this->db->query("Select count(nik) jumlah_kk from tbl_anggotakeluarga where noKK = '" . $query['noKK'] . "'");
+        $count = $dataCount->row_array();
+        $jumlah_kk = $count['jumlah_kk'];
+
+        // var_dump($result);
+        if ($jumlah_kk == 1) {            
+            $this->db->where('no_kk', $query['noKK']);
+            $this->db->delete('tbl_kartukeluarga');
+            
+            $this->db->where('nik', $nik);
+            return $this->db->delete('tbl_anggotakeluarga');
+
+        } else {
+            $this->db->where('nik', $nik);
+            return $this->db->delete('tbl_anggotakeluarga');
+        }
     }
     public function getUserKK($no_kk)
     {
@@ -72,4 +97,12 @@ class Pendataan_model extends CI_Model
         $query = $this->db->query("SELECT * from tbl_anggotakeluarga WHERE noKK = '" . $no_kk . "'");
         return $query->result();
     }
+
+    public function getEditAnggota($nik)
+    {
+        $query = $this->db->query("SELECT * from tbl_anggotakeluarga WHERE nik = '" . $nik . "'");
+        return $query->result();
+    }
+
+    
 }
