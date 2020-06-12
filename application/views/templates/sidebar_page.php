@@ -44,6 +44,7 @@
                 <h6 class="collapse-header">Fitur :</h6>
                 <a class="collapse-item" href="<?= base_url('pendataan/input_data') ?>">Input Data</a>
                 <a class="collapse-item" href="<?= base_url('pendataan/manajemen_data') ?>">Manajemen Data</a>
+                <a class="collapse-item" href="<?= base_url('pendataan/manajemen_kk') ?>">Manajemen KK</a>
             </div>
         </div>
     </li>

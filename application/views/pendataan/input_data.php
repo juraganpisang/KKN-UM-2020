@@ -42,7 +42,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label for="desa">Desa</label>
+                                                <label for="desa">Dusun</label>
                                                 <!-- <select name="desa" class="form-control">
                                                     <option value="">- Pilih -</option>
                                                     <option value="Desa 1">Desa 1</option>
@@ -55,9 +55,9 @@
                                                 <?php
                                                 $desa = array(
                                                     "" => "- Pilih -",
-                                                    "Desa Trajeng" => "Desa Trajeng",
-                                                    "Desa Krajan" => "Desa Krajan",
-                                                    "Desa Robyong" => "Desa Robyong"
+                                                    "Dusun Trajeng" => "Dusun Trajeng",
+                                                    "Dusun Krajan" => "Dusun Krajan",
+                                                    "Dusun Robyong" => "Dusun Robyong"
                                                 );
 
                                                 echo form_dropdown('desa', $desa, false, 'class="form-control" id="desa" required');

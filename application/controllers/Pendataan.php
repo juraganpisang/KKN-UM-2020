@@ -230,7 +230,7 @@ class Pendataan extends CI_Controller
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Edit Data Berhasil. </div>');
 
-        redirect('pendataan/manajemen_data');
+        redirect('pendataan/manajemen_kk');
     }
 
     public function manajemen_data()
@@ -246,52 +246,18 @@ class Pendataan extends CI_Controller
         $this->load->view('templates/footer_page');
     }
 
-    public function fetchData()
+    public function manajemen_kk()
     {
-        // POST data
-        $postData = $this->input->post();
+        $data['title'] = "MANAJEMEN DATA KK PENDUDUK";
+        $data['kepala'] = $this->pendataan_model->getAllKK();
+        // $data['data'] = $this->pendataan_model->getAllData();
 
-        // Get data
-        $data = $this->pendataan_model->getFilter($postData);
-
-        echo json_encode($data);
+        $this->load->view('templates/header_page');
+        $this->load->view('templates/sidebar_page');
+        $this->load->view('templates/topbar_page');
+        $this->load->view('pendataan/manajemen_kk', $data);
+        $this->load->view('templates/footer_page');
     }
-
-    public function ajaxList()
-    {
-        $list = $this->pendataan->get_datatables();
-        $data = array();
-        $no = $_POST['start'];
-        foreach ($list as $lst) {
-            $no++;
-            $row = array();
-            $row[] = $no;
-            $row[] = $lst->nama;
-            $row[] = $lst->umur;
-            $row[] = $lst->jenkel;
-            $row[] = $lst->status_kawin;
-            $row[] = $lst->rt;
-            $row[] = $lst->rw;
-            $row[] = $lst->nik;
-            $row[] = $lst->pendidikan;
-            $row[] = $lst->pekerjaan;
-            $row[] = $lst->penghasilan;
-            $row[] = $lst->desa;
-            $row[] = $lst->agama;
-
-            $data[] = $row;
-        }
-
-        $output = array(
-            "draw" => $_POST['draw'],
-            "recordsTotal" => $this->pendataan_model->count_all(),
-            "recordsFiltered" => $this->pendataan_model->count_filtered(),
-            "data" => $data,
-        );
-        //output to json format
-        echo json_encode($output);
-    }
-
     public function hapusData($no_kk)
     {
 
@@ -302,7 +268,7 @@ class Pendataan extends CI_Controller
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Hapus Data Berhasil. </div>');
 
-        redirect('pendataan/manajemen_data');
+        redirect('pendataan/manajemen_kk');
     }
 
     public function cetakData($no_kk)

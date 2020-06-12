@@ -18,7 +18,7 @@
             <td><?= $kpl['alamat']  ?></td>
         </tr>
         <tr>
-            <td>Desa</td>
+            <td>Dusun</td>
             <td><?= $kpl['desa'] ?></td>
         </tr>
         <tr>

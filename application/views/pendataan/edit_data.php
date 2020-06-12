@@ -39,13 +39,13 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label>Desa</label>
+                                                <label>Dusun</label>
                                                 <?php
                                                 $desa = array(
                                                     "" => "- Pilih -",
-                                                    "Desa Trajeng" => "Desa Trajeng",
-                                                    "Desa Krajan" => "Desa Krajan",
-                                                    "Desa Robyong" => "Desa Robyong"
+                                                    "Dusun Trajeng" => "Dusun Trajeng",
+                                                    "Dusun Krajan" => "Dusun Krajan",
+                                                    "Dusun Robyong" => "Dusun Robyong"
                                                 );
 
                                                 echo form_dropdown('desa', $desa, $kk['desa'], 'class="form-control" id="desa" required');
