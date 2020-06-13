@@ -38,8 +38,8 @@
                                 <th>Foto KK</th>
                                 <th>Alamat</th>
                                 <th>Desa</th>
-                                <th>RT</th>
                                 <th>RW</th>
+                                <th>RT</th>
                                 <th>Tanggal Simpan</th>
                             </tr>
                         </thead>
@@ -60,8 +60,8 @@
                                     <td><button class="btn btn-success" data-toggle="modal" data-target="#modal-arsip<?php echo $kpl->no_kk ?>"><i style="color:white;" class="fa fa-image fa-lg "></i></button></td>
                                     <td><?php echo $kpl->alamat; ?></td>
                                     <td><?php echo $kpl->desa; ?></td>
-                                    <td><?php echo $kpl->rt; ?></td>
                                     <td><?php echo $kpl->rw; ?></td>
+                                    <td><?php echo $kpl->rt; ?></td>
                                     <td><?php echo $kpl->tanggal_simpan; ?></td>
                                 </tr>
 
@@ -311,8 +311,8 @@
                                 <th>Foto KK</th>
                                 <th>Alamat</th>
                                 <th>Desa</th>
-                                <th>RT</th>
                                 <th>RW</th>
+                                <th>RT</th>
                                 <th>Tanggal Simpan</th>
                             </tr>
                         </tfoot>

@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon">
             <img class="img-fluid px-3 mt-0 mb-1" src="<?php echo base_url('assets/img/'); ?>um.png" alt="logo" style="width: 92px;">
         </div>
-        <div class="sidebar-brand-text mx-3 ml-2">KKN UM</div>
+        <div class="sidebar-brand-text mx-3 ml-2">SUPERSIP</div>
     </a>
 
     <!-- Divider -->

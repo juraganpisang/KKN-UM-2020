@@ -9,7 +9,8 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>KKN UM 2020</title>
+  <title>SUPERSIP</title>
+  <link rel="icon" type="image/png" href="<?= base_url('assets/img/um.png') ?>" />
 
   <!-- Custom fonts for this template-->
   <link href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet" type="text/css">

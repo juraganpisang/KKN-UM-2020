@@ -5,7 +5,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; KKN UM 2020</span>
+            <span>Copyright &copy; SUPERSIP 2020</span>
         </div>
     </div>
 </footer>
@@ -60,6 +60,99 @@
 
 <script src="<?= base_url('assets/js/bootstrap-datepicker.min.js'); ?>"></script>
 <script>
+    //desa rt rw
+    function desaChange() {
+        if (document.getElementById("desa").value == "Dusun Trajeng") {
+            $("#rw").replaceWith('<select name="rw" class="form-control" id="rw" required onChange="rwChange()">' +
+                '<option value="" selected="selected">- Pilih -</option>' +
+                '<option value="1">RW 01</option>' +
+                '<option value="2">RW 02</option>' +
+                '<option value="3">RW 03</option>' +
+                '<option value="4">RW 04</option>' +
+                '<option value="5">RW 05</option>' +
+                '<option value="14">RW 14</option>' +
+                '</select>');
+        } else if (document.getElementById("desa").value == "Dusun Krajan") {
+            $("#rw").replaceWith('<select name="rw" class="form-control" id="rw" required onChange="rwChange()">' +
+                '<option value="" selected="selected">- Pilih -</option>' +
+                '<option value="6">RW 06</option>' +
+                '<option value="7">RW 07</option>' +
+                '<option value="8">RW 08</option>' +
+                '<option value="9">RW 09</option>' +
+                '<option value="13">RW 13</option>' +
+                '</select>');
+        } else if (document.getElementById("desa").value == "Dusun Robyong") {
+            $("#rw").replaceWith('<select name="rw" class="form-control" id="rw" required onChange="rwChange()">' +
+                '<option value="" selected="selected">- Pilih -</option>' +
+                '<option value="10">RW 10</option>' +
+                '<option value="11">RW 11</option>' +
+                '<option value="12">RW 12</option>' +
+                '</select>');
+        }
+    }
+
+    function rwChange() {
+        if (document.getElementById("desa").value == "Dusun Trajeng") {
+            if ($("#rw").val() == "1" || $("#rw").val() == "2" || $("#rw").val() == "3" || $("#rw").val() == "4" || $("#rw").val() == "5") {
+                $("#rt").replaceWith('<select name="rt" class="form-control" id="rt" required>' +
+                    '<option value="" selected="selected">- Pilih -</option>' +
+                    '<option value="1">RT 01</option>' +
+                    '<option value="2">RT 02</option>' +
+                    '<option value="3">RT 03</option>' +
+                    '<option value="4">RT 04</option>' +
+                    '<option value="5">RT 05</option>' +
+                    '<option value="6">RT 06</option>' +
+                    '</select>');
+            } else if($("#rw").val() == "14" ) {
+                $("#rt").replaceWith('<select name="rt" class="form-control" id="rt" required>' +
+                    '<option value="" selected="selected">- Pilih -</option>' +
+                    '<option value="1">RT 01</option>' +
+                    '<option value="2">RT 02</option>' +
+                    '<option value="3">RT 03</option>' +
+                    '<option value="4">RT 04</option>' +
+                    '<option value="5">RT 05</option>' +
+                    '<option value="6">RT 06</option>' +
+                    '<option value="7">RT 07</option>' +
+                    '</select>');
+            }
+        } else if (document.getElementById("desa").value == "Dusun Krajan") {
+            if (document.getElementById("rw").value == "6" || $("#rw").val() == "7" || $("#rw").val() == "8" || $("#rw").val() == "9") {
+                $("#rt").replaceWith('<select name="rt" class="form-control" id="rt" required>' +
+                    '<option value="" selected="selected">- Pilih -</option>' +
+                    '<option value="1">RT 01</option>' +
+                    '<option value="2">RT 02</option>' +
+                    '<option value="3">RT 03</option>' +
+                    '<option value="4">RT 04</option>' +
+                    '</select>');
+            } else {
+                $("#rt").replaceWith('<select name="rt" class="form-control" id="rt" required>' +
+                    '<option value="" selected="selected">- Pilih -</option>' +
+                    '<option value="1">RT 01</option>' +
+                    '<option value="2">RT 02</option>' +
+                    '</select>');
+            }
+        } else if (document.getElementById("desa").value == "Dusun Robyong") {
+            if (document.getElementById("rw").value == 10 || $("#rw").val() == 12) {
+                $("#rt").replaceWith('<select name="rt" class="form-control" id="rt" required>' +
+                    '<option value="" selected="selected">- Pilih -</option>' +
+                    '<option value="1">RT 01</option>' +
+                    '<option value="2">RT 02</option>' +
+                    '<option value="3">RT 03</option>' +
+                    '<option value="4">RT 04</option>' +
+                    '<option value="5">RT 05</option>' +
+                    '</select>');
+            } else {
+                $("#rt").replaceWith('<select name="rt" class="form-control" id="rt" required>' +
+                    '<option value="" selected="selected">- Pilih -</option>' +
+                    '<option value="1">RT 01</option>' +
+                    '<option value="2">RT 02</option>' +
+                    '<option value="3">RT 03</option>' +
+                    '<option value="4">RT 04</option>' +
+                    '</select>');
+            }
+        }
+    }
+
     $(document).ready(function() {
 
         $('#table_manajemen').DataTable({
@@ -82,118 +175,6 @@
             }]
         });
 
-        //datatables
-        // table = $('#table_manajemen').DataTable({
-
-        //     "processing": true, //Feature control the processing indicator.
-        //     "serverSide": true, //Feature control DataTables' server-side processing mode.
-        //     "order": [], //Initial no order.
-
-        //     // Load data for the table's content from an Ajax source
-        //     "ajax": {
-        //         "url": "<?php echo site_url('pendataan/ajax_list') ?>",
-        //         "type": "POST",
-        //         "data": function(data) {
-        //             data.searchNama = $('#nama').val();
-        //             data.searchUmur = $('#umur').val();
-        //             data.searchJenkel = $('#jenkel').val();
-        //             data.searchStatus = $('#status_kawin').val();
-        //             data.searchRt = $('#rt').val();
-        //             data.searchRw = $('#rw').val();
-        //             data.searchNik = $('#nik').val();
-        //             data.searchPendidikan = $('#pendidikan').val();
-        //             data.searchPekerjaan = $('#pekerjaan').val();
-        //             data.searchPenghasilan = $('#penghasilan').val();
-        //             data.searchDesa = $('#desa').val();
-        //             data.searchAgama = $('#agama').val();
-        //         }
-        //     },
-
-        //     //Set column definition initialisation properties.
-        //     "columnDefs": [{
-        //         "targets": [0], //first column / numbering column
-        //         "orderable": false, //set not orderable
-        //     }, ],
-
-        // });
-
-        // $('#btn-filter').click(function() { //button filter event click
-        //     table.ajax.reload(); //just reload table
-        // });
-        // $('#btn-reset').click(function() { //button reset event click
-        //     $('#form-filter')[0].reset();
-        //     table.ajax.reload(); //just reload table
-        // });
-
-        // var userDataTable = $('#tableManajemen').DataTable({
-        //     'scrollX' : true,
-        //     'processing': true,
-        //     'serverSide': true,
-        //     'serverMethod': 'post',
-        //     //'searching': false, // Remove default Search Control
-        //     'ajax': {
-        //         'url': '<?= base_url() ?>pendataan/fetchData',
-        //         'data': function(data) {
-        //             data.searchNama = $('#nama').val();
-        //             data.searchUmur = $('#umur').val();
-        //             data.searchJenkel = $('#jenkel').val();
-        //             data.searchStatus = $('#status_kawin').val();
-        //             data.searchRt = $('#rt').val();
-        //             data.searchRw = $('#rw').val();
-        //             data.searchNik = $('#nik').val();
-        //             data.searchPendidikan = $('#pendidikan').val();
-        //             data.searchPekerjaan = $('#pekerjaan').val();
-        //             data.searchPenghasilan = $('#penghasilan').val();
-        //             data.searchDesa = $('#desa').val();
-        //             data.searchAgama = $('#agama').val();
-        //         }
-        //     },
-        //     'columns': [{
-        //             data: 'nama'
-        //         },
-        //         {
-        //             data: 'umur'
-        //         },
-        //         {
-        //             data: 'jenkel'
-        //         },
-        //         {
-        //             data: 'status_kawin'
-        //         },
-        //         {
-        //             data: 'rt'
-        //         },
-        //         {
-        //             data: 'rw'
-        //         },
-        //         {
-        //             data: 'nik'
-        //         },
-        //         {
-        //             data: 'pendidikan'
-        //         },
-        //         {
-        //             data: 'pekerjaan'
-        //         },
-        //         {
-        //             data: 'penghasilan'
-        //         },
-        //         {
-        //             data: 'desa'
-        //         },
-        //         {
-        //             data: 'agama'
-        //         },
-        //     ]
-        // });
-
-        // $('#jenkel,#agama').change(function() {
-        //     userDataTable.draw();
-        // });
-        // //input biasa
-        // $('#nama').keyup(function() {
-        //     userDataTable.draw();
-        // });
 
         //bedoooo
         $('#table_peminjam').DataTable({

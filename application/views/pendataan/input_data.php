@@ -60,51 +60,24 @@
                                                     "Dusun Robyong" => "Dusun Robyong"
                                                 );
 
-                                                echo form_dropdown('desa', $desa, false, 'class="form-control" id="desa" required');
+                                                echo form_dropdown('desa', $desa, false, 'class="form-control" id="desa" required onChange="desaChange()"');
                                                 ?>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="rw">RW</label>
-                                                <?php
-                                                $rw = array(
-                                                    "" => "- Pilih -",
-                                                    "1" => "RW 1",
-                                                    "2" => "RW 2",
-                                                    "3" => "RW 3",
-                                                    "4" => "RW 4",
-                                                    "5" => "RW 5",
-                                                    "6" => "RW 6",
-                                                    "7" => "RW 7",
-                                                    "8" => "RW 8",
-                                                    "9" => "RW 9",
-                                                    "10" => "RW 10",
-                                                    "11" => "RW 11",
-                                                    "12" => "RW 12",
-                                                    "13" => "RW 13",
-                                                    "14" => "RW 14",
-                                                );
-
-                                                echo form_dropdown('rw', $rw, false, 'class="form-control" id="rw" required');
-                                                ?>
+                                                <select class="form-control" id="rw">
+                                                    <option>- Pilih -</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="rt">RT</label>
-                                                <?php
-                                                $rt = array(
-                                                    "" => "- Pilih -",
-                                                    "1" => "RT 1",
-                                                    "2" => "RT 2",
-                                                    "3" => "RT 3",
-                                                    "4" => "RT 4",
-                                                    "5" => "RT 5"
-                                                );
-
-                                                echo form_dropdown('rt', $rt, false, 'class="form-control" id="rt" required');
-                                                ?>
+                                                <select class="form-control" id="rt">
+                                                    <option>- Pilih -</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
